@@ -6,6 +6,7 @@
  * Time: 14:17
  */
 
+namespace Amirniyaz\DesignPattern\src\AbstractFactory;
 interface Chair
 {
     public function hasLegs();
@@ -69,7 +70,7 @@ class VictorianChair implements Chair
     }
 }
 
-class ModernSofa implements Sofa
+class ModernSofa implements \Sofa
 {
 
     public function hasLegs()

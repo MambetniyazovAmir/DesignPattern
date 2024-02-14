@@ -6,6 +6,7 @@
  * Time: 13:53
  */
 
+namespace Amirniyaz\DesignPattern\src\Builder;
 interface Builder
 {
     public function reset();
@@ -21,20 +22,20 @@ interface Builder
 
 class Director
 {
-    public function makeSUV(Builder $builder)
+    public function makeSUV(\Builder $builder)
     {
         $builder->reset();
         $builder->setSeats(4);
-        $builder->setEngine(new Engine());
+        $builder->setEngine(new \Engine());
         $builder->setTripComputer(false);
         $builder->setGPS(true);
     }
 
-    public function makeSportsCar(Builder $builder)
+    public function makeSportsCar(\Builder $builder)
     {
         $builder->reset();
         $builder->setSeats(2);
-        $builder->setEngine(new SportEngine());
+        $builder->setEngine(new \SportEngine());
         $builder->setTripComputer(true);
         $builder->setGPS(true);
     }
@@ -116,7 +117,8 @@ class CarBuilder implements Builder
         $this->car->gps = $bool;
     }
 
-    public function getResult(): Car {
+    public function getResult(): Car
+    {
         return $this->car;
     }
 }
@@ -137,7 +139,8 @@ class Manual
     public $gps;
 }
 
-function run() {
+function run()
+{
     $director = new Director();
     $builder = new CarBuilder();
     $director->makeSUV($builder);

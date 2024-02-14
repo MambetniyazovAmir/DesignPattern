@@ -6,25 +6,30 @@
  * Time: 12:40
  */
 
-interface CarHolding {
+namespace Amirniyaz\DesignPattern\src\AbstractFactory;
+interface CarHolding
+{
     public function createSedan(): Sedan;
+
     public function createCoupe(): Coupe;
 }
 
-class Toyota implements CarHolding {
+class Toyota implements \CarHolding
+{
 
-    public function createSedan(): Sedan
+    public function createSedan(): \Sedan
     {
-        return new ToyotaSedan();
+        return new \ToyotaSedan();
     }
 
-    public function createCoupe(): Coupe
+    public function createCoupe(): \Coupe
     {
-        return new ToyotaCoupe();
+        return new \ToyotaCoupe();
     }
 }
 
-class GM implements CarHolding {
+class GM implements CarHolding
+{
 
     public function createSedan(): Sedan
     {
@@ -37,22 +42,27 @@ class GM implements CarHolding {
     }
 }
 
-interface Sedan {
+interface Sedan
+{
     public function info();
 }
 
-interface Coupe {
+interface Coupe
+{
     public function info();
 }
 
-class GMSedan implements  Sedan {
+class GMSedan implements Sedan
+{
 
     public function info()
     {
         echo "Sedan often have 4 doors \n These are Malibu, Impala Ozbekistanda bari sedango.";
     }
 }
-class GMCoupe implements Coupe {
+
+class GMCoupe implements Coupe
+{
 
     public function info()
     {
@@ -60,28 +70,31 @@ class GMCoupe implements Coupe {
     }
 }
 
-class ToyotaSedan implements Sedan {
+class ToyotaSedan implements Sedan
+{
     public function info()
     {
         echo "Camry, avalon";
     }
 }
 
-class ToyotaCoupe implements Coupe {
+class ToyotaCoupe implements Coupe
+{
     public function info()
     {
         echo "Camry Solara, Corolla have 2 doors";
     }
 }
 
-function clientCode() {
+function clientCode()
+{
     echo "Choose model print 1 or 2 (Toyota or GM)";
     $n = fread(STDIN, 80);
     if ($n == 1) {
         $toyota = new Toyota();
         echo "Sedan or Coupe print(1 or 2)";
         $f = fread(STDIN, 20);
-        if($f == 1) {
+        if ($f == 1) {
             $sedan = $toyota->createSedan();
             $sedan->info();
         } else {
@@ -92,7 +105,7 @@ function clientCode() {
         $gm = new GM();
         echo "Sedan or Coupe print(1 or 2)";
         $f = fread(STDIN, 20);
-        if($f == 1) {
+        if ($f == 1) {
             $sedan = $gm->createSedan();
             $sedan->info();
         } else {

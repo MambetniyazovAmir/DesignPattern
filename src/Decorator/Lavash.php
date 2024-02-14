@@ -2,7 +2,11 @@
 
 namespace Amirniyaz\DesignPattern\Decorator;
 
-class Lavash
+class Lavash implements FoodItem
 {
 
+    public function cost()
+    {
+        return 7;
+    }
 }

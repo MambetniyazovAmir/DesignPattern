@@ -6,6 +6,7 @@
  * Time: 13:15
  */
 
+namespace Amirniyaz\DesignPattern\src\AbstractFactory;
 interface System
 {
     public function createButton(): Button;
@@ -30,18 +31,18 @@ class Android implements System
 
 ;
 
-class Ios implements System
+class Ios implements \System
 {
 
-    public function createButton(): Button
+    public function createButton(): \Button
     {
-        $button = new IosButton();
+        $button = new \IosButton();
         return $button;
     }
 
-    public function createCheckBox(): CheckBox
+    public function createCheckBox(): \CheckBox
     {
-        $checkBox = new IosCheckBox();
+        $checkBox = new \IosCheckBox();
         return $checkBox;
     }
 }
